@@ -1,0 +1,17 @@
+{
+    "autopep8.args": ["--max-line-length", "150"],
+    "git.ignoreLimitWarning": true,
+    "files.exclude": {
+        ".venv": true,
+        "**/__pycache__": true,
+        ".gitattributes": true,
+        "ui_files": true
+    },
+    "editor.formatOnSave": true,
+    "prettier.tabWidth": 4,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true
+    },
+    "python.terminal.activateEnvironment": true
+}

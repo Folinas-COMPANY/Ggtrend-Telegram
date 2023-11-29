@@ -1,0 +1,16 @@
+==>> Time: 29-11-2023 09:17:32
+==>> Type: <class 'AttributeError'>
+==>> Value: 'Ui_MainWindow' object has no attribute 'statusbar'
+==>> Traceback:
+  File "c:\Users\hokag\Documents\GitHub\ggtrend-telegram\src\widget\HomeWindow.py", line 47, in startButtonEvent
+    self.ui.statusbar.showMessage("Please select mode to run")
+    ^^^^^^^^^^^^^^^^^
+
+==>> Time: 29-11-2023 09:17:34
+==>> Type: <class 'AttributeError'>
+==>> Value: 'Ui_MainWindow' object has no attribute 'statusbar'
+==>> Traceback:
+  File "c:\Users\hokag\Documents\GitHub\ggtrend-telegram\src\widget\HomeWindow.py", line 47, in startButtonEvent
+    self.ui.statusbar.showMessage("Please select mode to run")
+    ^^^^^^^^^^^^^^^^^
+
