@@ -14,3 +14,692 @@
     self.ui.statusbar.showMessage("Please select mode to run")
     ^^^^^^^^^^^^^^^^^
 
+==>> Time: 30-11-2023 14:55:06
+==>> Type: <class 'FileNotFoundError'>
+==>> Value: [WinError 3] The system cannot find the path specified: 'C:\\Users\\Folinas Staff\\Desktop\\ggtrend-telegram-main\\downloads_one_hour'
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\widget\HomeWindow.py", line 46, in startButtonEvent
+    thread = GetInfomationThread(mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 20, in __init__
+    self.__clear_download_folder()
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 32, in __clear_download_folder
+    shutil.rmtree(self.DOWNLOAD_DIRECTORY)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\shutil.py", line 759, in rmtree
+    return _rmtree_unsafe(path, onerror)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\shutil.py", line 603, in _rmtree_unsafe
+    onerror(os.scandir, path, sys.exc_info())
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\shutil.py", line 600, in _rmtree_unsafe
+    with os.scandir(path) as scandir_it:
+         ^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 15:00:49
+==>> Type: <class 'TypeError'>
+==>> Value: expected str, bytes or os.PathLike object, not GetInfomationThread
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\widget\HomeWindow.py", line 46, in startButtonEvent
+    thread = GetInfomationThread(mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 21, in __init__
+    self.proxy = self.checkProxyBeforeStart()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 30, in checkProxyBeforeStart
+    listProxies = self.get_proxies_list(path)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 58, in get_proxies_list
+    with open(proxies_dir, 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 15:05:08
+==>> Type: <class 'TypeError'>
+==>> Value: GetInfomationThread.proxy_check() missing 1 required positional argument: 'timeout'
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\widget\HomeWindow.py", line 46, in startButtonEvent
+    thread = GetInfomationThread(mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 22, in __init__
+    self.proxy = self.checkProxyBeforeStart()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 33, in checkProxyBeforeStart
+    res = self.proxy_check(proxy)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 15:27:47
+==>> Type: <class 'ValueError'>
+==>> Value: invalid literal for int() with base 10: '192.40.95.164'
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 108, in run
+    self.startBrowser()
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 144, in startBrowser
+    proxy_extension = ProxyExtensionNew(self.profilePath,int(self.proxy[0]), int(self.proxy[1]), usernameProxy, passwordProxy,'http')
+                                                         ^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 15:28:24
+==>> Type: <class 'UnboundLocalError'>
+==>> Value: cannot access local variable 'proxy_type' where it is not associated with a value
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\widget\HomeWindow.py", line 46, in startButtonEvent
+    thread = GetInfomationThread(mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 101, in __init__
+    self.proxy = self.checkProxyBeforeStart()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 116, in checkProxyBeforeStart
+    res = self.proxy_check(proxy,timeout=5)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 194, in proxy_check
+    print(f"==>> proxy_type: {proxy_type}")
+                              ^^^^^^^^^^
+
+==>> Time: 30-11-2023 15:29:07
+==>> Type: <class 'TypeError'>
+==>> Value: Binary Location Must be a String
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 108, in run
+    self.startBrowser()
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 146, in startBrowser
+    driver = uc.Chrome(options=opts,user_data_dir=os.path.abspath(self.profilePath),driver_executable_path=os.path.abspath(r'.\chromedriver.exe'),keep_alive=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 372, in __init__
+    options.binary_location = (
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\chromium\options.py", line 52, in binary_location
+    raise TypeError(self.BINARY_LOCATION_ERROR)
+
+==>> Time: 30-11-2023 15:32:28
+==>> Type: <class 'TypeError'>
+==>> Value: Binary Location Must be a String
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 110, in run
+    self.startBrowser()
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 150, in startBrowser
+    driver = uc.Chrome(options=opts,user_data_dir=self.profilePath,driver_executable_path=os.path.abspath('chromedriver.exe'),keep_alive=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 372, in __init__
+    options.binary_location = (
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\chromium\options.py", line 52, in binary_location
+    raise TypeError(self.BINARY_LOCATION_ERROR)
+
+==>> Time: 30-11-2023 15:33:00
+==>> Type: <class 'TypeError'>
+==>> Value: Binary Location Must be a String
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 110, in run
+    self.startBrowser()
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 150, in startBrowser
+    driver = uc.Chrome(options=opts,user_data_dir=self.profilePath,keep_alive=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 372, in __init__
+    options.binary_location = (
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\chromium\options.py", line 52, in binary_location
+    raise TypeError(self.BINARY_LOCATION_ERROR)
+
+==>> Time: 30-11-2023 15:40:56
+==>> Type: <class 'selenium.common.exceptions.InvalidArgumentException'>
+==>> Value: Message: invalid argument
+  (Session info: chrome=119.0.6045.200)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7485E82B2+55298]
+	(No symbol) [0x00007FF748555E02]
+	(No symbol) [0x00007FF74841045D]
+	(No symbol) [0x00007FF7483FEEDC]
+	(No symbol) [0x00007FF7483FD041]
+	(No symbol) [0x00007FF7483FD803]
+	(No symbol) [0x00007FF7484129BF]
+	(No symbol) [0x00007FF74848AE27]
+	(No symbol) [0x00007FF7484720AA]
+	(No symbol) [0x00007FF74848AAA4]
+	(No symbol) [0x00007FF748471E83]
+	(No symbol) [0x00007FF74844670A]
+	(No symbol) [0x00007FF748447964]
+	GetHandleVerifier [0x00007FF748960AAB+3694587]
+	GetHandleVerifier [0x00007FF7489B728E+4048862]
+	GetHandleVerifier [0x00007FF7489AF173+4015811]
+	GetHandleVerifier [0x00007FF7486847D6+695590]
+	(No symbol) [0x00007FF748560CE8]
+	(No symbol) [0x00007FF74855CF34]
+	(No symbol) [0x00007FF74855D062]
+	(No symbol) [0x00007FF74854D3A3]
+	BaseThreadInitThunk [0x00007FFC0A397344+20]
+	RtlUserThreadStart [0x00007FFC0AFE26B1+33]
+
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 112, in run
+    browser.get('gooogle')
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\SeleniumFunctions.py", line 40, in get
+    self.driver.get(url)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+==>> Time: 30-11-2023 17:01:58
+==>> Type: <class 'urllib3.exceptions.ProtocolError'>
+==>> Value: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 140, in run
+    browser.get(self.url)
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\SeleniumFunctions.py", line 40, in get
+    self.driver.get(url)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1378, in getresponse
+    response.begin()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:02:18
+==>> Type: <class 'urllib3.exceptions.MaxRetryError'>
+==>> Value: HTTPConnectionPool(host='localhost', port=54441): Max retries exceeded with url: /session/0831a6c666beef8c98575b2b011cb5d2/refresh (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C1E68CA710>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 142, in run
+    browser.driver.refresh()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 570, in refresh
+    self.execute(Command.REFRESH)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ==>> Time: 30-11-2023 17:21:54
+==>> Type: <class 'urllib3.exceptions.ProtocolError'>
+==>> Value: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 140, in run
+    browser.get(self.url)
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\SeleniumFunctions.py", line 40, in get
+    self.driver.get(url)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1378, in getresponse
+    response.begin()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:23:20
+==>> Type: <class 'urllib3.exceptions.MaxRetryError'>
+==>> Value: HTTPConnectionPool(host='localhost', port=50366): Max retries exceeded with url: /session/5390ae5307388702e0830cf75d9186c5/url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000254E8935250>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 140, in run
+    browser.get(self.url)
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\SeleniumFunctions.py", line 30, in get
+    clean_current = self.driver.current_url.split('://')[-1]
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 806, in __getattribute__
+    return super().__getattribute__(item)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 437, in current_url
+    return self.execute(Command.GET_CURRENT_URL)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 110, in request
+    return self.request_encode_url(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 143, in request_encode_url
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:32:10
+==>> Type: <class 'urllib3.exceptions.ProtocolError'>
+==>> Value: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 140, in run
+    browser.get(self.url)
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\SeleniumFunctions.py", line 40, in get
+    self.driver.get(url)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1378, in getresponse
+    response.begin()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:39:23
+==>> Type: <class 'urllib3.exceptions.MaxRetryError'>
+==>> Value: HTTPConnectionPool(host='localhost', port=50834): Max retries exceeded with url: /session/37b2e38b2bf257513a0901dc8bd51d79/refresh (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F222F19350>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 149, in run
+    browser.driver.refresh()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 570, in refresh
+    self.execute(Command.REFRESH)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:41:15
+==>> Type: <class 'urllib3.exceptions.ProtocolError'>
+==>> Value: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 140, in run
+    browser.get(self.url)
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\SeleniumFunctions.py", line 40, in get
+    self.driver.get(url)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 665, in get
+    return super().get(url)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in get
+    self.execute(Command.GET, {"url": url})
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1378, in getresponse
+    response.begin()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:41:34
+==>> Type: <class 'urllib3.exceptions.MaxRetryError'>
+==>> Value: HTTPConnectionPool(host='localhost', port=51128): Max retries exceeded with url: /session/05334cfcb2883240462fe1a6d7c60006/refresh (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002E24E4506D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 142, in run
+    browser.driver.refresh()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 570, in refresh
+    self.execute(Command.REFRESH)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 874, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:46:32
+==>> Type: <class 'urllib3.exceptions.ProtocolError'>
+==>> Value: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 149, in run
+    browser.driver.refresh()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 570, in refresh
+    self.execute(Command.REFRESH)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 345, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 300, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = http.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 118, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\_request_methods.py", line 217, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\poolmanager.py", line 444, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 844, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\retry.py", line 470, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 790, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 1378, in getresponse
+    response.begin()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 318, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\http\client.py", line 279, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 706, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+
+==>> Time: 30-11-2023 17:47:28
+==>> Type: <class 'selenium.common.exceptions.WebDriverException'>
+==>> Value: Message: unknown error: cannot connect to chrome at 127.0.0.1:52064
+from chrome not reachable
+Stacktrace:
+	GetHandleVerifier [0x00007FF7C01B82B2+55298]
+	(No symbol) [0x00007FF7C0125E02]
+	(No symbol) [0x00007FF7BFFE045D]
+	(No symbol) [0x00007FF7BFFD1DD0]
+	(No symbol) [0x00007FF7C00131F4]
+	(No symbol) [0x00007FF7C000C621]
+	(No symbol) [0x00007FF7C004A198]
+	(No symbol) [0x00007FF7C0049CB0]
+	(No symbol) [0x00007FF7C0041E83]
+	(No symbol) [0x00007FF7C001670A]
+	(No symbol) [0x00007FF7C0017964]
+	GetHandleVerifier [0x00007FF7C0530AAB+3694587]
+	GetHandleVerifier [0x00007FF7C058728E+4048862]
+	GetHandleVerifier [0x00007FF7C057F173+4015811]
+	GetHandleVerifier [0x00007FF7C02547D6+695590]
+	(No symbol) [0x00007FF7C0130CE8]
+	(No symbol) [0x00007FF7C012CF34]
+	(No symbol) [0x00007FF7C012D062]
+	(No symbol) [0x00007FF7C011D3A3]
+	BaseThreadInitThunk [0x00007FFD16E47344+20]
+	RtlUserThreadStart [0x00007FFD171E26B1+33]
+
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 137, in run
+    browser = BrowserFunctions(self.startBrowser())
+                               ^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Desktop\ggtrend-telegram-main\src\core\HomeController.py", line 261, in startBrowser
+    driver = uc.Chrome(options=opts,user_data_dir=self.profilePath,driver_executable_path=os.path.abspath('chromedriver.exe'),keep_alive=False,no_sandbox=False,use_subprocess=False)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 466, in __init__
+    super(Chrome, self).__init__(
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 724, in start_session
+    super(selenium.webdriver.chrome.webdriver.WebDriver, self).start_session(
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
