@@ -703,3 +703,82 @@ Stacktrace:
   File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
     raise exception_class(message, screen, stacktrace)
 
+==>> Time: 01-12-2023 08:54:17
+==>> Type: <class 'selenium.common.exceptions.NoSuchWindowException'>
+==>> Value: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=119.0.6045.200)
+Stacktrace:
+	GetHandleVerifier [0x00007FF751C482B2+55298]
+	(No symbol) [0x00007FF751BB5E02]
+	(No symbol) [0x00007FF751A705AB]
+	(No symbol) [0x00007FF751A50038]
+	(No symbol) [0x00007FF751AD6BC7]
+	(No symbol) [0x00007FF751AEA15F]
+	(No symbol) [0x00007FF751AD1E83]
+	(No symbol) [0x00007FF751AA670A]
+	(No symbol) [0x00007FF751AA7964]
+	GetHandleVerifier [0x00007FF751FC0AAB+3694587]
+	GetHandleVerifier [0x00007FF75201728E+4048862]
+	GetHandleVerifier [0x00007FF75200F173+4015811]
+	GetHandleVerifier [0x00007FF751CE47D6+695590]
+	(No symbol) [0x00007FF751BC0CE8]
+	(No symbol) [0x00007FF751BBCF34]
+	(No symbol) [0x00007FF751BBD062]
+	(No symbol) [0x00007FF751BAD3A3]
+	BaseThreadInitThunk [0x00007FFE812E7344+20]
+	RtlUserThreadStart [0x00007FFE81C226B1+33]
+
+==>> Traceback:
+  File "C:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\core\HomeController.py", line 148, in run
+    browser.driver.refresh()
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 570, in refresh
+    self.execute(Command.REFRESH)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+
+==>> Time: 01-12-2023 08:54:19
+==>> Type: <class 'selenium.common.exceptions.NoSuchWindowException'>
+==>> Value: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=119.0.6045.200)
+Stacktrace:
+	GetHandleVerifier [0x00007FF751C482B2+55298]
+	(No symbol) [0x00007FF751BB5E02]
+	(No symbol) [0x00007FF751A705AB]
+	(No symbol) [0x00007FF751A50038]
+	(No symbol) [0x00007FF751AD6BC7]
+	(No symbol) [0x00007FF751AEA15F]
+	(No symbol) [0x00007FF751AD1E83]
+	(No symbol) [0x00007FF751AA670A]
+	(No symbol) [0x00007FF751AA7964]
+	GetHandleVerifier [0x00007FF751FC0AAB+3694587]
+	GetHandleVerifier [0x00007FF75201728E+4048862]
+	GetHandleVerifier [0x00007FF75200F173+4015811]
+	GetHandleVerifier [0x00007FF751CE47D6+695590]
+	(No symbol) [0x00007FF751BC0CE8]
+	(No symbol) [0x00007FF751BBCF34]
+	(No symbol) [0x00007FF751BBD062]
+	(No symbol) [0x00007FF751BAD3A3]
+	BaseThreadInitThunk [0x00007FFE812E7344+20]
+	RtlUserThreadStart [0x00007FFE81C226B1+33]
+
+==>> Traceback:
+  File "C:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\core\HomeController.py", line 146, in run
+    browser.get(self.url)
+  File "C:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\core\SeleniumFunctions.py", line 30, in get
+    clean_current = self.driver.current_url.split('://')[-1]
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\undetected_chromedriver\__init__.py", line 806, in __getattribute__
+    return super().__getattribute__(item)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 437, in current_url
+    return self.execute(Command.GET_CURRENT_URL)["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+

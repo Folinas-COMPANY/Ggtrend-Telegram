@@ -10,11 +10,21 @@ import undetected_chromedriver as uc
 import time
 from src.core.SeleniumFunctions import BrowserFunctions
 from selenium.webdriver.common.by import By
-import datetime,traceback
-sys.path.append(os.getcwd()) 
+import datetime
+import traceback
+from dotenv import load_dotenv
+
+
+# Load env
+load_dotenv()
+
+sys.path.append(os.getcwd())  # NOQA
+
+main_dir = os.getcwd()
+
 
 class ProxyExtensionNew:
-    def __init__(self,profile_path, ip, port, username=None, password=None,mode = None):
+    def __init__(self, profile_path, ip, port, username=None, password=None, mode=None):
         self.ip = ip
         self.port = port
         self.username = username
@@ -83,7 +93,7 @@ class ProxyExtensionNew:
 
         with open(os.path.join(self.directory, 'manifest.json'), 'w') as f:
             f.write(manifest_json)
-        
+
         with open(os.path.join(self.directory, 'background.js'), 'w') as f:
             f.write(background_js)
 
@@ -97,8 +107,9 @@ class GetInfomationThread(QThread):
     error_signal = pyqtSignal(str)
     BASE_URL = 'https://trends.google.com/trends/'
 
-    def __init__(self,mode,kw):
+    def __init__(self, mode, kw):
         super().__init__()
+        os.chdir(main_dir)
         modes = {
             'one_day': f'https://trends.google.com.vn/trends/explore?date=now%201-d&geo=US&q={kw}&hl=en',
             'one_hour': f'https://trends.google.com.vn/trends/explore?date=now%201-H&geo=US&q={kw}&hl=en',
@@ -107,10 +118,10 @@ class GetInfomationThread(QThread):
         }
         self.mode = mode
         self.kw = kw
-        self.DOWNLOAD_DIRECTORY = os.path.join(os.getcwd(), 'downloads',f'downloads_{mode}')
+        self.DOWNLOAD_DIRECTORY = os.path.join(os.getcwd(), 'downloads', f'downloads_{mode}')
         self.__clear_download_folder()
         self.proxy = self.checkProxyBeforeStart()
-        self.profilePath = os.path.join(os.getcwd(), 'profiles_browser',mode)
+        self.profilePath = os.path.join(os.getcwd(), 'profiles_browser', mode)
         self.url = modes[mode]
         self.telegram = {
             'shirt': -1001561938466,
@@ -123,15 +134,11 @@ class GetInfomationThread(QThread):
             'hat': -324682703,
             'sweater': -393764434,
             'blanket': -296954526,
-            'mug' : -377721611
+            'mug': -377721611
         }
         self.isForceClosed = False
         self.browser = None
-        
-        
-        
 
-    
     def run(self):
         while not self.isForceClosed:
             driver = self.startBrowser()
@@ -147,39 +154,42 @@ class GetInfomationThread(QThread):
             time.sleep(3)
             browser.driver.refresh()
             time.sleep(2)
-            
+
             while not self.isForceClosed:
-                oops = browser.find(By.XPATH,"//p[contains(text(), 'Oops! Something went wrong')]")
+                oops = browser.find(By.XPATH, "//p[contains(text(), 'Oops! Something went wrong')]")
                 if oops:
                     time.sleep(5)
                     browser.driver.refresh()
                 else:
                     break
 
-            relatedq = browser.find(By.XPATH,"//div[contains(text(), 'Related queries')]")
+            relatedq = browser.find(By.XPATH, "//div[contains(text(), 'Related queries')]")
             if not relatedq:
                 self.error_signal.emit(f'Luồng {self.mode} - Không tìm được vùng Related queries từ Google Trends')
                 return
             browser.scrollToElement(relatedq)
-            nodata = browser.find(By.XPATH,"""//p[text()="Hmm, your search doesn't have enough data to show here."]""")
+            nodata = browser.find(By.XPATH, """//p[text()="Hmm, your search doesn't have enough data to show here."]""")
             if nodata:
-                self.error_signal.emit(f'Luồng {self.mode} - Vùng Related queries từ Google Trends không hề có dữ liệu!')
+                self.error_signal.emit(
+                    f'Luồng {self.mode} - Vùng Related queries từ Google Trends không hề có dữ liệu!')
                 return
-            # btnDownload = browser.find(By.XPATH,"""//div[contains(text(), 'Related queries')]/..//button[@class="widget-actions-item export"]""")
-            # btnDownload.click()
-            # time.sleep(3)
-            # new_name = f'{self.kw}_{self.mode}.csv'
-            # # Rename the file
-            # os.rename(os.path.join(self.DOWNLOAD_DIRECTORY, self.__latest_download_file()),
-            #             os.path.join(self.DOWNLOAD_DIRECTORY, new_name))
-            # self.send_message_to_telegram(
-            #         file_directory=os.path.join(self.DOWNLOAD_DIRECTORY, new_name),
-            #         time_frame=self.mode,
-            #         chat_id=self.telegram[self.kw]
-            #     )
-        
-    
-    def send_message_to_telegram(self,file_directory: str, time_frame: str, chat_id):
+            btnDownload = browser.find(
+                By.XPATH, """//div[contains(text(), 'Related queries')]/..//button[@class="widget-actions-item export"]""")
+            btnDownload.click()
+            time.sleep(3)
+            new_name = f'{self.kw}_{self.mode}.csv'
+            # Rename the file
+            os.rename(os.path.join(self.DOWNLOAD_DIRECTORY, self.__latest_download_file()),
+                      os.path.join(self.DOWNLOAD_DIRECTORY, new_name))
+            self.send_message_to_telegram(
+                file_directory=os.path.join(self.DOWNLOAD_DIRECTORY, new_name),
+                time_frame=self.mode,
+                chat_id=self.telegram[self.kw]
+            )
+            browser.quit()
+            break
+
+    def send_message_to_telegram(self, file_directory: str, time_frame: str, chat_id):
         def __parse_message():
             with open(file_directory, 'r', encoding='utf8') as f:
                 text = f.read()
@@ -203,7 +213,7 @@ class GetInfomationThread(QThread):
 
             # Create a list of lists for the table
             table_data = [[keyword, percentage]
-                        for keyword, percentage in zip(keywords, percentages)]
+                          for keyword, percentage in zip(keywords, percentages)]
 
             # Create the table in MarkdownV2 format for Telegram message
             table_md = "```\n"  # Start MarkdownV2 code block
@@ -218,7 +228,7 @@ class GetInfomationThread(QThread):
         time_now = datetime.datetime.now().strftime("%d/%m/%Y ---- %H:%M:%S")
         data = f'Send at: {time_now}\n' + \
             __parse_message()
-        response = requests.post(f'https://api.telegram.org/bot{bot_token}/sendMessage', data={
+        response = requests.post(f'https://api.telegram.org/bot{os.environ.get("BOT_TOKEN")}/sendMessage', data={
             'chat_id': chat_id,
             'text': data,
             "parse_mode": "Markdown"
@@ -235,18 +245,17 @@ class GetInfomationThread(QThread):
         listProxies = self.get_proxies_list(path)
         while True:
             proxy = random.choice(listProxies)
-            res = self.proxy_check(proxy,timeout=5)
+            res = self.proxy_check(proxy, timeout=5)
             if res:
                 return proxy
-        
+
     def startBrowser(self):
         opts = uc.ChromeOptions()
         opts.add_argument(f"--window-size={random.randint(1024,1600)},{random.randint(768,960)}")
-    
+
         opts.add_argument(f"--disable-features=PrivacySandboxSettings4")
         opts.add_argument("--mute-audio")
         opts.add_argument('--password-store=basic')
-        
 
         # opts.add_argument('--disable-features=PrivacySandboxSettings4')
         opts.add_experimental_option(
@@ -254,7 +263,11 @@ class GetInfomationThread(QThread):
             {
                 "credentials_enable_service": False,
                 "profile.password_manager_enabled": False,
+                "download.default_directory": self.DOWNLOAD_DIRECTORY
             },
+
+
+
         )
 
         rtcBlockExts = r'.\webrtcblockext'
@@ -262,13 +275,15 @@ class GetInfomationThread(QThread):
         print(f"==>> usernameProxy: {usernameProxy}")
         passwordProxy = self.proxy[3]
         print(f"==>> passwordProxy: {passwordProxy}")
-        proxy_extension = ProxyExtensionNew(self.profilePath,self.proxy[0], int(self.proxy[1]), usernameProxy, passwordProxy,'http')
+        proxy_extension = ProxyExtensionNew(self.profilePath, self.proxy[0], int(
+            self.proxy[1]), usernameProxy, passwordProxy, 'http')
         opts.add_argument(f"--load-extension={proxy_extension.directory},{os.path.abspath(rtcBlockExts)}")
         try:
-            driver = uc.Chrome(options=opts,user_data_dir=self.profilePath,driver_executable_path=os.path.abspath('chromedriver.exe'),keep_alive=False,no_sandbox=False,use_subprocess=False)
+            driver = uc.Chrome(options=opts, user_data_dir=self.profilePath, driver_executable_path=os.path.abspath(
+                'chromedriver.exe'), keep_alive=False, use_subprocess=False)
         except:
             print(traceback.format_exc())
-            return [False,traceback.format_exc()]
+            return [False, traceback.format_exc()]
         return driver
 
     def __clear_download_folder(self):
@@ -277,8 +292,8 @@ class GetInfomationThread(QThread):
         except:
             pass
         os.makedirs(self.DOWNLOAD_DIRECTORY)
-    
-    def proxy_check(self,proxy: tuple, timeout: int) -> tuple:
+
+    def proxy_check(self, proxy: tuple, timeout: int) -> tuple:
         protocols = ['http', 'socks4', 'socks5']
 
         if len(proxy) not in (2, 4):
@@ -316,16 +331,16 @@ class GetInfomationThread(QThread):
                     ok_proxy = True
                     proxy_type = protocol
                     break
-            
+
             if ok_proxy:
                 return True
                 return (proxy, 'OK', proxy_type)
-                
+
             else:
                 return False
                 return (proxy, 'Not working', None)
-    
-    def get_proxies_list(self,proxies_dir: str, separate=':') -> list:
+
+    def get_proxies_list(self, proxies_dir: str, separate=':') -> list:
         """
         This function helps us to divide ip, port [username, password] from a list of proxies of any type of protocol (http)
         Args:
@@ -349,6 +364,7 @@ class GetInfomationThread(QThread):
 
     def __latest_download_file(self) -> str:
         path = self.DOWNLOAD_DIRECTORY
+        print(f"==>> path: {path}")
         os.chdir(path)
         files = sorted(os.listdir(os.getcwd()), key=os.path.getmtime)
         newest = files[-1]
@@ -358,6 +374,7 @@ class GetInfomationThread(QThread):
         self.isForceClosed = True
         self.browser.quit()
 
+
 def pushNotification(title):
     msg = QMessageBox()
     msg.setWindowTitle('Thông báo!')
@@ -366,3 +383,32 @@ def pushNotification(title):
     msg.activateWindow()
     msg.exec_()
     return
+
+
+def pushYNQuestion(msg):
+    # msgBox = QMessageBox()
+    # icon = QIcon(":/logo/icon-sw.png")
+    # # icon.addPixmap(QPixmap(":/logo/icon-sw.png"))
+    # msgBox.setWindowIcon(icon)
+
+    # ret = msgBox.question(
+    #     None, 'Cảnh báo', msg, msgBox.Yes | msgBox.No)
+    # if ret == msgBox.Yes:
+    #     return True
+    # else:
+    #     return False
+
+    msg_box = QMessageBox()
+    msg_box.setWindowTitle("Thông báo")
+    msg_box.setText(msg)
+    msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+
+    # Set the icon of the dialog
+    msg_box.setWindowIcon(QIcon(":/logo/icon-sw.png"))
+
+    button_reply = msg_box.exec_()
+
+    if button_reply == QMessageBox.Yes:
+        return True
+    else:
+        return False
