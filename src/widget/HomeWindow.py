@@ -1,3 +1,4 @@
+import json
 import os
 import random
 import pause
@@ -21,16 +22,21 @@ class HomeWindow(QMainWindow):
         # Array for storing mode to run
         self.run_array = []
         self.crawlerThreads = []
-        self.ui.one_hour_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, 'one_hour'))
-        self.ui.one_day_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, 'one_day'))
-        self.ui.four_hours_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, 'four_hours'))
-        self.ui.seven_days_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, 'seven_days'))
+        self.ui.one_hour_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, '1_hour'))
+        self.ui.one_day_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, '1_day'))
+        self.ui.four_hours_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, '4_hours'))
+        self.ui.seven_days_checkbox.clicked.connect(lambda x: self.onCheckModeCrawler(x, '7_days'))
         self.ui.start_button.clicked.connect(lambda: self.startButtonEvent())
         self.ui.stop_button.clicked.connect(self.stopButtonEvent)
         # self.ui.autoRun.clicked.connect(self.autoRunUpdate)
-
+        self.telegramJson = self.getTelegramJson()
         self.keyword = ['shirt', 'sweatshirt', 't shirt', 'hoodie', 'coffee mug',
                         'poster', 'sticker', 'hat', 'sweater', 'blanket', 'mug']
+
+    def getTelegramJson(self):
+        with open('./config/telegram_chat_ids.json', 'r+', encoding="utf-8") as f:
+            json_data = json.load(f)
+            return json_data
 
     def autoRunUpdate(self, auto):
         thisWindow = self
@@ -50,7 +56,7 @@ class HomeWindow(QMainWindow):
                 while not self.isForcedStop:
                     now = datetime.datetime.now()
                     future = now + datetime.timedelta(minutes=thisWindow.ui.timeValue.value())
-                    print(f"==>> thisDialog.ui.timeValue.value(): {thisWindow.ui.timeValue.value()}")
+
                     year = future.year
                     month = future.month
                     day = future.day
@@ -90,8 +96,9 @@ class HomeWindow(QMainWindow):
 
     def startRunning(self):
         for mode in self.run_array:
+            keywords = self.telegramJson[mode]
 
-            thread = GetInfomationThread(mode, random.choice(self.keyword))
+            thread = GetInfomationThread(mode, keywords)
             thread.error_signal.connect(pushNotification)
             self.crawlerThreads.append(thread)
             thread.start()

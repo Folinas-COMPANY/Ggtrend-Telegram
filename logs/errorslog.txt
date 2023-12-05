@@ -782,3 +782,34 @@ Stacktrace:
   File "C:\Users\Folinas Staff\AppData\Local\Programs\Python\Python311\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
     raise exception_class(message, screen, stacktrace)
 
+==>> Time: 05-12-2023 08:39:23
+==>> Type: <class 'KeyError'>
+==>> Value: 'one_hour'
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\widget\HomeWindow.py", line 51, in run
+    thisWindow.startRunning()
+  File "c:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\widget\HomeWindow.py", line 99, in startRunning
+    keywords = self.telegramJson[mode]
+               ~~~~~~~~~~~~~~~~~^^^^^^
+
+==>> Time: 05-12-2023 08:43:22
+==>> Type: <class 'AttributeError'>
+==>> Value: 'NoneType' object has no attribute 'click'
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\core\HomeController.py", line 178, in run
+    btnDownload.click()
+    ^^^^^^^^^^^^^^^^^
+
+==>> Time: 05-12-2023 08:46:20
+==>> Type: <class 'NameError'>
+==>> Value: name 'kw' is not defined
+==>> Traceback:
+  File "c:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\widget\HomeWindow.py", line 51, in run
+    thisWindow.startRunning()
+  File "c:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\widget\HomeWindow.py", line 101, in startRunning
+    thread = GetInfomationThread(mode, keywords)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Folinas Staff\Documents\GitHub\ggtrend-telegram\src\core\HomeController.py", line 114, in __init__
+    '1_day': f'https://trends.google.com.vn/trends/explore?date=now%201-d&geo=US&q={kw}&hl=en',
+                                                                                    ^^
+

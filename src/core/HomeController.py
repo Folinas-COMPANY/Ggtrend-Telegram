@@ -107,22 +107,18 @@ class GetInfomationThread(QThread):
     error_signal = pyqtSignal(str)
     BASE_URL = 'https://trends.google.com/trends/'
 
-    def __init__(self, mode, kw):
+    def __init__(self, mode, keywords):
         super().__init__()
         os.chdir(main_dir)
-        modes = {
-            'one_day': f'https://trends.google.com.vn/trends/explore?date=now%201-d&geo=US&q={kw}&hl=en',
-            'one_hour': f'https://trends.google.com.vn/trends/explore?date=now%201-H&geo=US&q={kw}&hl=en',
-            'four_hours': f'https://trends.google.com.vn/trends/explore?date=now%204-H&geo=US&q={kw}&hl=en',
-            'seven_days': f'https://trends.google.com.vn/trends/explore?date=now%207-d&geo=US&q={kw}&hl=en'
-        }
+
         self.mode = mode
-        self.kw = kw
+        self.kw = None
+        self.keywords = keywords
         self.DOWNLOAD_DIRECTORY = os.path.join(os.getcwd(), 'downloads', f'downloads_{mode}')
         self.__clear_download_folder()
         self.proxy = self.checkProxyBeforeStart()
         self.profilePath = os.path.join(os.getcwd(), 'profiles_browser', mode)
-        self.url = modes[mode]
+
         self.telegram = {
             'shirt': -1001561938466,
             'sweatshirt': -328245863,
@@ -140,53 +136,67 @@ class GetInfomationThread(QThread):
         self.browser = None
 
     def run(self):
+        driver = self.startBrowser()
+        browser = BrowserFunctions(driver)
+        self.browser = browser
+        browser.get('http://gooogle.com/')
         while not self.isForceClosed:
-            driver = self.startBrowser()
-            try:
-                self.error_signal.emit(f'Luồng {self.mode} - Khởi tạo trình duyệt thất bại bởi vì: <br>{driver[1]}')
-                return
-            except:
-                pass
-            browser = BrowserFunctions(driver)
-            self.browser = browser
-            browser.get('http://gooogle.com/')
-            browser.get(self.url)
-            time.sleep(3)
-            browser.driver.refresh()
-            time.sleep(2)
+            for kw in self.keywords:
+                self.kw = kw
+                modes = {
+                    '1_day': f'https://trends.google.com.vn/trends/explore?date=now%201-d&geo=US&q={kw}&hl=en',
+                    '1_hour': f'https://trends.google.com.vn/trends/explore?date=now%201-H&geo=US&q={kw}&hl=en',
+                    '4_hours': f'https://trends.google.com.vn/trends/explore?date=now%204-H&geo=US&q={kw}&hl=en',
+                    '7_days': f'https://trends.google.com.vn/trends/explore?date=now%207-d&geo=US&q={kw}&hl=en'
+                }
+                self.url = modes[self.mode]
 
-            while not self.isForceClosed:
-                oops = browser.find(By.XPATH, "//p[contains(text(), 'Oops! Something went wrong')]")
-                if oops:
-                    time.sleep(5)
-                    browser.driver.refresh()
-                else:
-                    break
+                try:
+                    self.error_signal.emit(f'Luồng {self.mode} - Khởi tạo trình duyệt thất bại bởi vì: <br>{driver[1]}')
+                    return
+                except:
+                    pass
 
-            relatedq = browser.find(By.XPATH, "//div[contains(text(), 'Related queries')]")
-            if not relatedq:
-                self.error_signal.emit(f'Luồng {self.mode} - Không tìm được vùng Related queries từ Google Trends')
-                return
-            browser.scrollToElement(relatedq)
-            nodata = browser.find(By.XPATH, """//p[text()="Hmm, your search doesn't have enough data to show here."]""")
-            if nodata:
-                self.error_signal.emit(
-                    f'Luồng {self.mode} - Vùng Related queries từ Google Trends không hề có dữ liệu!')
-                return
-            btnDownload = browser.find(
-                By.XPATH, """//div[contains(text(), 'Related queries')]/..//button[@class="widget-actions-item export"]""")
-            btnDownload.click()
-            time.sleep(3)
-            new_name = f'{self.kw}_{self.mode}.csv'
-            # Rename the file
-            os.rename(os.path.join(self.DOWNLOAD_DIRECTORY, self.__latest_download_file()),
-                      os.path.join(self.DOWNLOAD_DIRECTORY, new_name))
-            self.send_message_to_telegram(
-                file_directory=os.path.join(self.DOWNLOAD_DIRECTORY, new_name),
-                time_frame=self.mode,
-                chat_id=self.telegram[self.kw]
-            )
+                browser.get(self.url)
+                time.sleep(3)
+                browser.driver.refresh()
+                time.sleep(2)
+
+                while not self.isForceClosed:
+                    oops = browser.find(By.XPATH, "//p[contains(text(), 'Oops! Something went wrong')]")
+                    if oops:
+                        time.sleep(5)
+                        browser.driver.refresh()
+                    else:
+                        break
+
+                relatedq = browser.find(By.XPATH, "//div[contains(text(), 'Related queries')]")
+                if not relatedq:
+                    self.error_signal.emit(f'Luồng {self.mode} - Không tìm được vùng Related queries từ Google Trends')
+                    return
+                browser.scrollToElement(relatedq)
+                nodata = browser.find(
+                    By.XPATH, """//p[text()="Hmm, your search doesn't have enough data to show here."]""")
+                if nodata:
+                    self.error_signal.emit(
+                        f'Luồng {self.mode} - Vùng Related queries từ Google Trends không hề có dữ liệu!')
+                    return
+                btnDownload = browser.find(
+                    By.XPATH, """//div[contains(text(), 'Related queries')]/..//button[@class="widget-actions-item export"]""")
+                btnDownload.click()
+                time.sleep(3)
+                new_name = f'{self.kw}_{self.mode}.csv'
+                # Rename the file
+                os.rename(os.path.join(self.DOWNLOAD_DIRECTORY, self.__latest_download_file()),
+                          os.path.join(self.DOWNLOAD_DIRECTORY, new_name))
+                self.send_message_to_telegram(
+                    file_directory=os.path.join(self.DOWNLOAD_DIRECTORY, new_name),
+                    time_frame=self.mode,
+                    chat_id=self.telegram[self.kw]
+                )
+                time.sleep(3)
             browser.quit()
+
             break
 
     def send_message_to_telegram(self, file_directory: str, time_frame: str, chat_id):
@@ -412,3 +422,24 @@ def pushYNQuestion(msg):
         return True
     else:
         return False
+
+
+def pushQuestionWithCustomAnswerRender():
+    msgBox = QMessageBox()
+    icon = QIcon()
+    icon.addPixmap(QPixmap(":/logo/icon-sw.png"), QIcon.Normal, QIcon.Off)
+    msgBox.setWindowIcon(icon)
+    msgBox.setText(f'Video này đã được render trước đó, bạn có muốn render lại không?')
+    button1 = msgBox.addButton('Render tiếp video vừa render trước đó', QMessageBox.YesRole)
+    button2 = msgBox.addButton('Render lại video gốc', QMessageBox.NoRole)
+    button3 = msgBox.addButton('Thoát!', QMessageBox.RejectRole)
+    msgBox.setWindowTitle('Khoan đã!')
+
+    msgBox.exec_()
+
+    if msgBox.clickedButton() == button1:
+        return 'rendered'
+    elif msgBox.clickedButton() == button2:
+        return 'original'
+    elif msgBox.clickedButton() == button3:
+        return 'cancel'
