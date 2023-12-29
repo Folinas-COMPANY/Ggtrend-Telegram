@@ -5,3 +5,5 @@ pyinstaller==5.13.0
 selenium
 webdriver-manager
 beautifulsoup4
+pause 
+undetected_chromedriver
